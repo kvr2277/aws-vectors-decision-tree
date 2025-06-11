@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Vector Databases Decision Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body>
+    <div class="matrix-bg"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <h1>AWS Vector Databases</h1>
+                <span class="subtitle">Decision Guide & Best Practices</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#decision-tree">Decision Tree</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#use-cases">Use Cases</a></li>
+                <li><a href="#resources">Resources</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="overview">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    AWS Vector Databases
+                    <span class="accent">Decision Guide</span>
+                </h1>
+                <p class="hero-description">
+                    Navigate the AWS vector database landscape with confidence. Make informed decisions
+                    about semantic search, RAG, and AI-powered applications for your business needs.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#decision-tree" class="btn btn-primary">Start Decision Tree</a>
+                    <a href="#services" class="btn btn-secondary">Explore Services</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="vector-pillars">
+                    <div class="pillar" data-pillar="semantic-search">
+                        <div class="pillar-icon">🔍</div>
+                        <h3>Semantic Search</h3>
+                        <p>AI-powered search with meaning and context</p>
+                    </div>
+                    <div class="pillar" data-pillar="rag">
+                        <div class="pillar-icon">🧠</div>
+                        <h3>RAG</h3>
+                        <p>Retrieval-Augmented Generation</p>
+                    </div>
+                    <div class="pillar" data-pillar="recommendations">
+                        <div class="pillar-icon">⭐</div>
+                        <h3>Recommendations</h3>
+                        <p>Personalized content and product suggestions</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Decision Tree Section -->
+    <section class="decision-tree" id="decision-tree">
+        <div class="container">
+            <h2 class="section-title">AWS Vector Database Decision Tree</h2>
+            <p class="section-description">
+                Answer a few questions to get personalized recommendations for your vector database and AI use cases.
+            </p>
+
+            <div class="decision-flow">
+                <div class="decision-node active" id="start-node">
+                    <div class="node-content">
+                        <h3>What is your primary use case?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-next="semantic-search">
+                                <span class="option-icon">🔍</span>
+                                <div>
+                                    <strong>Semantic Search</strong>
+                                    <p>Search documents, content, or data with meaning and context</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="rag-applications">
+                                <span class="option-icon">🧠</span>
+                                <div>
+                                    <strong>RAG Applications</strong>
+                                    <p>Build chatbots, Q&A systems, or knowledge assistants</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="recommendations">
+                                <span class="option-icon">⭐</span>
+                                <div>
+                                    <strong>Recommendation Systems</strong>
+                                    <p>Product recommendations, content matching, personalization</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="similarity-matching">
+                                <span class="option-icon">🎯</span>
+                                <div>
+                                    <strong>Similarity Matching</strong>
+                                    <p>Find similar images, documents, or data patterns</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Semantic Search Path -->
+                <div class="decision-node" id="semantic-search">
+                    <div class="node-content">
+                        <h3>What type of content are you searching?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-next="document-search">
+                                <span class="option-icon">📄</span>
+                                <div>
+                                    <strong>Documents & Text</strong>
+                                    <p>PDFs, articles, web content, knowledge bases</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="multimedia-search">
+                                <span class="option-icon">🎵</span>
+                                <div>
+                                    <strong>Multimedia Content</strong>
+                                    <p>Images, audio, video, multimodal content</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="code-search">
+                                <span class="option-icon">💻</span>
+                                <div>
+                                    <strong>Code & Technical Content</strong>
+                                    <p>Source code, documentation, technical specs</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="start-node">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Document Search -->
+                <div class="decision-node" id="document-search">
+                    <div class="node-content">
+                        <h3>What is your scale and performance requirements?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="opensearch-basic">
+                                <span class="option-icon">🏢</span>
+                                <div>
+                                    <strong>Small to Medium Scale</strong>
+                                    <p>
+                                        < 1M documents, moderate query volume</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="opensearch-enterprise">
+                                <span class="option-icon">🏗️</span>
+                                <div>
+                                    <strong>Enterprise Scale</strong>
+                                    <p>> 1M documents, high query volume, multi-tenant</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="bedrock-knowledge-base">
+                                <span class="option-icon">⚡</span>
+                                <div>
+                                    <strong>Rapid Prototyping</strong>
+                                    <p>Quick setup, managed service, built-in embeddings</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="semantic-search">← Back</button>
+                    </div>
+                </div>
+
+                <!-- RAG Applications Path -->
+                <div class="decision-node" id="rag-applications">
+                    <div class="node-content">
+                        <h3>What type of RAG application are you building?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-next="enterprise-rag">
+                                <span class="option-icon">🏢</span>
+                                <div>
+                                    <strong>Enterprise Knowledge Assistant</strong>
+                                    <p>Internal documents, company knowledge, employee tools</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="customer-rag">
+                                <span class="option-icon">💬</span>
+                                <div>
+                                    <strong>Customer-Facing Chatbot</strong>
+                                    <p>Public websites, customer support, FAQ systems</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-next="domain-rag">
+                                <span class="option-icon">🔬</span>
+                                <div>
+                                    <strong>Domain-Specific Assistant</strong>
+                                    <p>Legal, medical, technical, specialized knowledge</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="start-node">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Enterprise RAG -->
+                <div class="decision-node" id="enterprise-rag">
+                    <div class="node-content">
+                        <h3>What are your security and compliance requirements?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="bedrock-enterprise-rag">
+                                <span class="option-icon">🔒</span>
+                                <div>
+                                    <strong>High Security & Compliance</strong>
+                                    <p>Regulated industries, sensitive data, audit requirements</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="opensearch-rag">
+                                <span class="option-icon">⚙️</span>
+                                <div>
+                                    <strong>Custom Control & Flexibility</strong>
+                                    <p>Custom models, fine-tuning, specific integrations</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="rag-applications">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Recommendations Path -->
+                <div class="decision-node" id="recommendations">
+                    <div class="node-content">
+                        <h3>What type of recommendations do you need?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="personalization-service">
+                                <span class="option-icon">🛍️</span>
+                                <div>
+                                    <strong>E-commerce & Product Recommendations</strong>
+                                    <p>Product suggestions, shopping experiences</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="content-recommendations">
+                                <span class="option-icon">📺</span>
+                                <div>
+                                    <strong>Content & Media Recommendations</strong>
+                                    <p>Articles, videos, music, entertainment</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="custom-recommendations">
+                                <span class="option-icon">🎯</span>
+                                <div>
+                                    <strong>Custom Similarity Matching</strong>
+                                    <p>Domain-specific matching, custom embeddings</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="start-node">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Similarity Matching Path -->
+                <div class="decision-node" id="similarity-matching">
+                    <div class="node-content">
+                        <h3>What type of similarity matching do you need?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="image-similarity">
+                                <span class="option-icon">🖼️</span>
+                                <div>
+                                    <strong>Image & Visual Similarity</strong>
+                                    <p>Product images, visual search, content matching</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="text-similarity">
+                                <span class="option-icon">📝</span>
+                                <div>
+                                    <strong>Text & Document Similarity</strong>
+                                    <p>Document deduplication, content matching, plagiarism detection</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="behavior-similarity">
+                                <span class="option-icon">👥</span>
+                                <div>
+                                    <strong>User Behavior Similarity</strong>
+                                    <p>Fraud detection, anomaly detection, pattern recognition</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="start-node">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Multimedia Search Path -->
+                <div class="decision-node" id="multimedia-search">
+                    <div class="node-content">
+                        <h3>What is your multimedia search focus?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="image-search">
+                                <span class="option-icon">🖼️</span>
+                                <div>
+                                    <strong>Image Search</strong>
+                                    <p>Visual similarity, reverse image search, product catalogs</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="video-search">
+                                <span class="option-icon">🎥</span>
+                                <div>
+                                    <strong>Video & Audio Search</strong>
+                                    <p>Content libraries, media archives, entertainment platforms</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="multimodal-search">
+                                <span class="option-icon">🔄</span>
+                                <div>
+                                    <strong>Multimodal Search</strong>
+                                    <p>Combined text, image, and metadata search</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="semantic-search">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Code Search Path -->
+                <div class="decision-node" id="code-search">
+                    <div class="node-content">
+                        <h3>What type of code search do you need?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="code-semantic-search">
+                                <span class="option-icon">🔍</span>
+                                <div>
+                                    <strong>Semantic Code Search</strong>
+                                    <p>Find code by functionality, not just keywords</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="documentation-search">
+                                <span class="option-icon">📚</span>
+                                <div>
+                                    <strong>Technical Documentation</strong>
+                                    <p>API docs, technical specifications, developer resources</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="code-similarity">
+                                <span class="option-icon">🔄</span>
+                                <div>
+                                    <strong>Code Similarity & Duplication</strong>
+                                    <p>Find similar code patterns, detect duplicates</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="semantic-search">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Customer RAG Path -->
+                <div class="decision-node" id="customer-rag">
+                    <div class="node-content">
+                        <h3>What scale of customer-facing RAG do you need?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="website-chatbot">
+                                <span class="option-icon">🌐</span>
+                                <div>
+                                    <strong>Website Chatbot</strong>
+                                    <p>FAQ automation, basic customer support</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="customer-support-rag">
+                                <span class="option-icon">🎧</span>
+                                <div>
+                                    <strong>Advanced Customer Support</strong>
+                                    <p>Complex queries, escalation handling, multi-language</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="public-knowledge-rag">
+                                <span class="option-icon">🌍</span>
+                                <div>
+                                    <strong>Public Knowledge Assistant</strong>
+                                    <p>Large-scale public information systems</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="rag-applications">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Domain RAG Path -->
+                <div class="decision-node" id="domain-rag">
+                    <div class="node-content">
+                        <h3>What is your specialized domain?</h3>
+                        <div class="options">
+                            <button class="option-btn" data-result="legal-rag">
+                                <span class="option-icon">⚖️</span>
+                                <div>
+                                    <strong>Legal & Compliance</strong>
+                                    <p>Legal research, contract analysis, regulatory compliance</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="medical-rag">
+                                <span class="option-icon">🏥</span>
+                                <div>
+                                    <strong>Healthcare & Medical</strong>
+                                    <p>Medical literature, diagnosis support, research</p>
+                                </div>
+                            </button>
+                            <button class="option-btn" data-result="technical-rag">
+                                <span class="option-icon">🔬</span>
+                                <div>
+                                    <strong>Technical & Engineering</strong>
+                                    <p>Technical manuals, engineering docs, research papers</p>
+                                </div>
+                            </button>
+                        </div>
+                        <button class="back-btn" data-back="rag-applications">← Back</button>
+                    </div>
+                </div>
+
+                <!-- Results Section -->
+                <div class="results-section" id="results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">AWS Vector Database Services</h2>
+            <p class="section-description">
+                Comprehensive overview of AWS services for vector databases and AI applications.
+            </p>
+
+            <div class="services-grid">
+                <div class="service-card" data-service="opensearch">
+                    <div class="service-icon">🔍</div>
+                    <h3>Amazon OpenSearch Service</h3>
+                    <p>Fully managed search and analytics service with vector database capabilities</p>
+                    <ul class="service-features">
+                        <li>k-NN vector search</li>
+                        <li>Hybrid search (text + vectors)</li>
+                        <li>Real-time indexing</li>
+                        <li>Multi-AZ deployment</li>
+                        <li>Security & compliance</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">Semantic Search</span>
+                        <span class="tag">Enterprise</span>
+                        <span class="tag">Scalable</span>
+                    </div>
+                    <a href="https://aws.amazon.com/opensearch-service/" target="_blank" class="service-link">Learn More
+                        →</a>
+                </div>
+
+                <div class="service-card" data-service="bedrock">
+                    <div class="service-icon">🧠</div>
+                    <h3>Amazon Bedrock Knowledge Bases</h3>
+                    <p>Fully managed RAG service with built-in vector storage and retrieval</p>
+                    <ul class="service-features">
+                        <li>Automatic embeddings</li>
+                        <li>Managed vector storage</li>
+                        <li>Built-in chunking</li>
+                        <li>Foundation model integration</li>
+                        <li>Serverless architecture</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">RAG</span>
+                        <span class="tag">Managed</span>
+                        <span class="tag">Serverless</span>
+                    </div>
+                    <a href="https://aws.amazon.com/bedrock/" target="_blank" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card" data-service="rds-pgvector">
+                    <div class="service-icon">🐘</div>
+                    <h3>Amazon RDS for PostgreSQL (pgvector)</h3>
+                    <p>Relational database with vector extension for hybrid applications</p>
+                    <ul class="service-features">
+                        <li>pgvector extension</li>
+                        <li>ACID compliance</li>
+                        <li>Existing PostgreSQL skills</li>
+                        <li>Hybrid data models</li>
+                        <li>Automated backups</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">Relational</span>
+                        <span class="tag">Hybrid</span>
+                        <span class="tag">Familiar</span>
+                    </div>
+                    <a href="https://aws.amazon.com/rds/postgresql/" target="_blank" class="service-link">Learn More
+                        →</a>
+                </div>
+
+                <div class="service-card" data-service="personalize">
+                    <div class="service-icon">⭐</div>
+                    <h3>Amazon Personalize</h3>
+                    <p>ML-powered recommendation service using collaborative filtering and deep learning</p>
+                    <ul class="service-features">
+                        <li>Real-time recommendations</li>
+                        <li>AutoML capabilities</li>
+                        <li>Multiple algorithms</li>
+                        <li>A/B testing</li>
+                        <li>Business metrics optimization</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">Recommendations</span>
+                        <span class="tag">AutoML</span>
+                        <span class="tag">Real-time</span>
+                    </div>
+                    <a href="https://aws.amazon.com/personalize/" target="_blank" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card" data-service="memorydb">
+                    <div class="service-icon">⚡</div>
+                    <h3>Amazon MemoryDB for Redis</h3>
+                    <p>Ultra-fast in-memory database with vector search capabilities</p>
+                    <ul class="service-features">
+                        <li>Sub-millisecond latency</li>
+                        <li>Vector similarity search</li>
+                        <li>In-memory performance</li>
+                        <li>Redis compatibility</li>
+                        <li>Multi-AZ durability</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">Ultra-fast</span>
+                        <span class="tag">In-memory</span>
+                        <span class="tag">Redis</span>
+                    </div>
+                    <a href="https://aws.amazon.com/memorydb/" target="_blank" class="service-link">Learn More →</a>
+                </div>
+
+                <div class="service-card" data-service="documentdb">
+                    <div class="service-icon">📄</div>
+                    <h3>Amazon DocumentDB</h3>
+                    <p>MongoDB-compatible document database with vector search</p>
+                    <ul class="service-features">
+                        <li>Vector search capability</li>
+                        <li>MongoDB compatibility</li>
+                        <li>Flexible schema</li>
+                        <li>Automatic scaling</li>
+                        <li>Point-in-time recovery</li>
+                    </ul>
+                    <div class="service-tags">
+                        <span class="tag">Document</span>
+                        <span class="tag">MongoDB</span>
+                        <span class="tag">Flexible</span>
+                    </div>
+                    <a href="https://aws.amazon.com/documentdb/" target="_blank" class="service-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section class="use-cases" id="use-cases">
+        <div class="container">
+            <h2 class="section-title">Common Vector Database Use Cases</h2>
+            <p class="section-description">
+                Explore real-world applications and implementation patterns for vector databases on AWS.
+            </p>
+
+            <div class="use-cases-container">
+                <div class="use-case-card">
+                    <div class="use-case-icon">🔍</div>
+                    <h3>Semantic Search</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Search based on meaning and context, not just keywords</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Enterprise document search</li>
+                            <li>E-commerce product discovery</li>
+                            <li>Knowledge base search</li>
+                            <li>Legal document research</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Organizations with large text corpora</p>
+                        <p><strong>Cost considerations:</strong> $500-$5000/month depending on scale</p>
+                    </div>
+                    <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/semantic-search.html"
+                        target="_blank" class="use-case-link">Implementation Guide →</a>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🧠</div>
+                    <h3>RAG (Retrieval-Augmented Generation)</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Enhance LLMs with domain-specific knowledge</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Customer support chatbots</li>
+                            <li>Technical documentation assistants</li>
+                            <li>Legal research tools</li>
+                            <li>Medical diagnosis support</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Organizations needing AI with proprietary knowledge</p>
+                        <p><strong>Cost considerations:</strong> $1000-$10000/month including LLM costs</p>
+                    </div>
+                    <a href="https://aws.amazon.com/what-is/retrieval-augmented-generation/" target="_blank"
+                        class="use-case-link">Learn More →</a>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">⭐</div>
+                    <h3>Recommendation Systems</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Personalized content and product suggestions</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>E-commerce product recommendations</li>
+                            <li>Content streaming platforms</li>
+                            <li>Social media feeds</li>
+                            <li>News article suggestions</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Consumer-facing applications with user engagement</p>
+                        <p><strong>Cost considerations:</strong> $200-$2000/month based on user volume</p>
+                    </div>
+                    <a href="https://aws.amazon.com/personalize/" target="_blank" class="use-case-link">Get Started
+                        →</a>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🎯</div>
+                    <h3>Similarity Matching</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Find similar items based on features and characteristics</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Image similarity search</li>
+                            <li>Fraud detection</li>
+                            <li>Duplicate content detection</li>
+                            <li>DNA sequence analysis</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Applications requiring pattern recognition</p>
+                        <p><strong>Cost considerations:</strong> $300-$3000/month depending on data volume</p>
+                    </div>
+                    <a href="https://aws.amazon.com/opensearch-service/" target="_blank" class="use-case-link">Technical
+                        Docs →</a>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🛡️</div>
+                    <h3>Anomaly Detection</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Identify unusual patterns or outliers in data</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Network security monitoring</li>
+                            <li>Financial fraud detection</li>
+                            <li>IoT sensor anomalies</li>
+                            <li>Quality control systems</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Security and monitoring applications</p>
+                        <p><strong>Cost considerations:</strong> $400-$4000/month based on data throughput</p>
+                    </div>
+                    <a href="https://aws.amazon.com/opensearch-service/" target="_blank" class="use-case-link">Learn
+                        More →</a>
+                </div>
+
+                <div class="use-case-card">
+                    <div class="use-case-icon">🔬</div>
+                    <h3>Scientific Research</h3>
+                    <div class="use-case-details">
+                        <p><strong>What:</strong> Analyze complex scientific data and find patterns</p>
+                        <p><strong>Examples:</strong></p>
+                        <ul>
+                            <li>Drug discovery</li>
+                            <li>Genomic analysis</li>
+                            <li>Climate modeling</li>
+                            <li>Material science</li>
+                        </ul>
+                        <p><strong>Best for:</strong> Research institutions and pharmaceutical companies</p>
+                        <p><strong>Cost considerations:</strong> $1000-$20000/month for compute-intensive workloads</p>
+                    </div>
+                    <a href="https://aws.amazon.com/hpc/" target="_blank" class="use-case-link">HPC Solutions →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources" id="resources">
+        <div class="container">
+            <h2 class="section-title">Resources & Getting Started</h2>
+            <p class="section-description">
+                Curated resources to help you implement vector databases and AI applications on AWS.
+            </p>
+
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-icon">📚</div>
+                    <h3>Official Documentation</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/what-is/vector-databases/" target="_blank">What are Vector
+                                Databases?</a></li>
+                        <li><a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/semantic-search.html"
+                                target="_blank">OpenSearch Semantic Search</a></li>
+                        <li><a href="https://docs.aws.amazon.com/bedrock/" target="_blank">Amazon Bedrock
+                                Documentation</a></li>
+                        <li><a href="https://docs.aws.amazon.com/personalize/" target="_blank">Amazon Personalize
+                                Guide</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🛠️</div>
+                    <h3>Workshops & Tutorials</h3>
+                    <ul>
+                        <li><a href="https://catalog.workshops.aws/semantic-search/en-US" target="_blank">Semantic
+                                Search Workshop</a></li>
+                        <li><a href="https://github.com/aws-samples/amazon-bedrock-samples" target="_blank">Bedrock Code
+                                Samples</a></li>
+                        <li><a href="https://github.com/aws-samples/amazon-opensearch-service-samples"
+                                target="_blank">OpenSearch Examples</a></li>
+                        <li><a href="https://aws.amazon.com/getting-started/hands-on/build-modern-app-personalize/"
+                                target="_blank">Personalize Hands-on</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">📝</div>
+                    <h3>Blogs & Articles</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/blogs/big-data/amazon-opensearch-services-vector-database-capabilities-explained/"
+                                target="_blank">OpenSearch Vector Capabilities</a></li>
+                        <li><a href="https://aws.amazon.com/blogs/machine-learning/" target="_blank">Machine Learning
+                                Blog</a></li>
+                        <li><a href="https://aws.amazon.com/blogs/architecture/" target="_blank">Architecture Blog</a>
+                        </li>
+                        <li><a href="https://aws.amazon.com/solutions/implementations/" target="_blank">Solution
+                                Implementations</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🎥</div>
+                    <h3>Videos & Training</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/training/learn-about/machine-learning/" target="_blank">ML
+                                Training Path</a></li>
+                        <li><a href="https://www.youtube.com/c/amazonwebservices" target="_blank">AWS YouTube
+                                Channel</a></li>
+                        <li><a href="https://aws.amazon.com/events/online-tech-talks/" target="_blank">Technical
+                                Talks</a></li>
+                        <li><a href="https://aws.amazon.com/certification/" target="_blank">AWS Certifications</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">💰</div>
+                    <h3>Cost Optimization</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/pricing/" target="_blank">AWS Pricing Calculator</a></li>
+                        <li><a href="https://aws.amazon.com/aws-cost-management/" target="_blank">Cost Management
+                                Tools</a></li>
+                        <li><a href="https://aws.amazon.com/free/" target="_blank">Free Tier Eligibility</a></li>
+                        <li><a href="https://aws.amazon.com/economics/" target="_blank">Cloud Economics</a></li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon">🏗️</div>
+                    <h3>Architecture Patterns</h3>
+                    <ul>
+                        <li><a href="https://aws.amazon.com/architecture/" target="_blank">AWS Architecture Center</a>
+                        </li>
+                        <li><a href="https://aws.amazon.com/solutions/" target="_blank">AWS Solutions Library</a></li>
+                        <li><a href="https://aws.amazon.com/quickstart/" target="_blank">Quick Start Guides</a></li>
+                        <li><a href="https://aws.amazon.com/well-architected/" target="_blank">Well-Architected
+                                Framework</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>This is an unofficial guide. Please refer to official AWS documentation for the most up-to-date
+                information.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

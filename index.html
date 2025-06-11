@@ -19,7 +19,7 @@
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
-                <h1>AWS Vector Databases</h1>
+                <h1 id="nav-title" style="cursor: pointer;">AWS Vector Databases</h1>
                 <span class="subtitle">Decision Guide & Best Practices</span>
             </div>
             <ul class="nav-menu">
@@ -483,19 +483,19 @@
 
                 <div class="service-card" data-service="rds-pgvector">
                     <div class="service-icon">🐘</div>
-                    <h3>Amazon RDS for PostgreSQL (pgvector)</h3>
-                    <p>Relational database with vector extension for hybrid applications</p>
+                    <h3>Amazon Aurora PostgreSQL / RDS PostgreSQL</h3>
+                    <p>Relational databases with pgvector extension for hybrid applications</p>
                     <ul class="service-features">
-                        <li>pgvector extension</li>
+                        <li>pgvector extension support</li>
                         <li>ACID compliance</li>
                         <li>Existing PostgreSQL skills</li>
                         <li>Hybrid data models</li>
-                        <li>Automated backups</li>
+                        <li>Aurora: Optimized Reads with NVMe caching</li>
                     </ul>
                     <div class="service-tags">
                         <span class="tag">Relational</span>
                         <span class="tag">Hybrid</span>
-                        <span class="tag">Familiar</span>
+                        <span class="tag">pgvector</span>
                     </div>
                     <a href="https://aws.amazon.com/rds/postgresql/" target="_blank" class="service-link">Learn More
                         →</a>
@@ -522,19 +522,20 @@
 
                 <div class="service-card" data-service="memorydb">
                     <div class="service-icon">⚡</div>
-                    <h3>Amazon MemoryDB for Redis</h3>
-                    <p>Ultra-fast in-memory database with vector search capabilities</p>
+                    <h3>Amazon MemoryDB</h3>
+                    <p>Ultra-fast in-memory database with vector search capabilities (Valkey and Redis OSS compatible)
+                    </p>
                     <ul class="service-features">
                         <li>Sub-millisecond latency</li>
                         <li>Vector similarity search</li>
                         <li>In-memory performance</li>
-                        <li>Redis compatibility</li>
+                        <li>Valkey and Redis OSS compatibility</li>
                         <li>Multi-AZ durability</li>
                     </ul>
                     <div class="service-tags">
                         <span class="tag">Ultra-fast</span>
                         <span class="tag">In-memory</span>
-                        <span class="tag">Redis</span>
+                        <span class="tag">Valkey</span>
                     </div>
                     <a href="https://aws.amazon.com/memorydb/" target="_blank" class="service-link">Learn More →</a>
                 </div>

@@ -79,6 +79,19 @@ class VectorDatabaseDecisionTree {
                 this.highlightPillar(pillar.dataset.pillar);
             });
         });
+
+        // Title click to go to start of decision tree
+        const navTitle = document.getElementById('nav-title');
+        if (navTitle) {
+            navTitle.addEventListener('click', () => {
+                this.navigateToNode('start-node');
+                // Scroll to decision tree section
+                const decisionTreeSection = document.getElementById('decision-tree');
+                if (decisionTreeSection) {
+                    decisionTreeSection.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
     }
 
     setupNavigation() {
@@ -189,7 +202,7 @@ class VectorDatabaseDecisionTree {
                 </div>
                 
                 <div class="result-actions">
-                    <button class="btn btn-primary" onclick="decisionTree.navigateToNode('start-node')">Start Over</button>
+                    <button class="btn btn-primary" onclick="decisionTree.startOver()">Start Over</button>
                     <a href="#use-cases" class="btn btn-secondary">View Use Cases</a>
                 </div>
             </div>
@@ -197,6 +210,16 @@ class VectorDatabaseDecisionTree {
 
         resultsSection.classList.add('active');
         resultsSection.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    startOver() {
+        // Reset to start node
+        this.navigateToNode('start-node');
+        // Scroll to decision tree section
+        const decisionTreeSection = document.getElementById('decision-tree');
+        if (decisionTreeSection) {
+            decisionTreeSection.scrollIntoView({ behavior: 'smooth' });
+        }
     }
 
     getResultData(resultType) {
